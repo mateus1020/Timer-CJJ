@@ -20,7 +20,7 @@ function startTimer(minutes) {
         updateDisplay(remainingSeconds);
 
         // Últimos 5 segundos: toca beep a cada segundo
-        if (remainingSeconds > 0 && remainingSeconds <= 5) {
+        if (remainingSeconds <= 0) {
           const alarm = document.getElementById("alarm");
           alarm.currentTime = 0; 
           alarm.play();

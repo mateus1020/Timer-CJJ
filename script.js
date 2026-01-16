@@ -19,13 +19,6 @@ function startTimer(minutes) {
         remainingSeconds--;
         updateDisplay(remainingSeconds);
 
-        // Últimos 5 segundos: toca beep a cada segundo
-        if (remainingSeconds <= 0) {
-          const alarm = document.getElementById("alarm");
-          alarm.currentTime = 0; 
-          alarm.play();
-        }
-
         if (remainingSeconds <= 0) {
           clearInterval(timer);
           updateDisplay(0); // mostra 00:00
@@ -123,3 +116,4 @@ function highlightButton(minutes) {
     }
   });
 }
+

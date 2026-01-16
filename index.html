@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Timer TV</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Prompt:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <img src="images-logo cjj.png" alt="Logo CJJ" class="logo">
+
+    <div class="container">
+      <h1>CJJ</h1>
+      <h1>ESCOLA DE LUTAS</h1>
+
+      <!-- Bloco único para os botões -->
+      <div class="buttons">
+        <button data-minutes="1" onclick="startTimer(1)">1 min</button>
+        <button data-minutes="2" onclick="startTimer(2)">2 min</button>
+        <button data-minutes="4" onclick="startTimer(4)">4 min</button>
+        <button data-minutes="5" onclick="startTimer(5)">5 min</button>
+        <button data-minutes="8" onclick="startTimer(8)">8 min</button>
+        <button data-minutes="10" onclick="startTimer(10)">10 min</button>
+      </div>
+
+      <div id="display">00:00</div>
+
+      <div class="controls">
+        <button onclick="pauseTimer()">Pause</button>
+        <button onclick="resetTimer()">Reset</button>
+      </div>
+    </div>
+
+    <audio id="alarm" src="alarm.mp3.mp3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>

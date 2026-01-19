@@ -1,19 +1,22 @@
 let timer;
+let timerDelay; 
 let remainingSeconds = 0;
 let paused = false;
-let selectedMinutes = 0; // guarda o último tempo escolhido
+let selectedMinutes = 0; 
 
 function startTimer(minutes) {
   clearInterval(timer);
+  clearTimeout(timerDelay); 
+
   remainingSeconds = minutes * 60;
-  selectedMinutes = minutes; // salva o tempo escolhido
+  selectedMinutes = minutes; 
   paused = false;
   updateDisplay(remainingSeconds);
 
-  highlightButton(minutes); // destaca o botão clicado
+  highlightButton(minutes); 
 
   // Delay de 2 segundos antes de iniciar a contagem
-  setTimeout(() => {
+  timerDelay = setTimeout(() => {
     timer = setInterval(() => {
       if (!paused) {
         remainingSeconds--;
@@ -26,19 +29,21 @@ function startTimer(minutes) {
           alarm.currentTime = 0;
           alarm.play();
 
+          clearTimeout(timerDelay); // ⬅️ SEGURANÇA
+
           // fica 2 segundos em 00:00 e depois volta para o valor escolhido
-          setTimeout(() => {
+          timerDelay = setTimeout(() => {
             remainingSeconds = selectedMinutes * 60;
             updateDisplay(remainingSeconds);
           }, 2000);
         }
       }
     }, 1000);
-  }, 2000); // espera 2 segundos antes de iniciar
+  }, 2000);
 }
 
 function pauseTimer() {
-  const pauseBtn = document.querySelector(".controls button"); // pega o botão Pause
+  const pauseBtn = document.querySelector(".controls button"); 
   if (paused) {
     paused = false;
     pauseBtn.innerText = "Pause";
@@ -50,13 +55,15 @@ function pauseTimer() {
 
 function resetTimer() {
   clearInterval(timer);
+  clearTimeout(timerDelay); // ⬅️ LIMPA TIMEOUT PENDENTE
+
   if (selectedMinutes > 0) {
     remainingSeconds = selectedMinutes * 60; // volta para o último tempo escolhido
     paused = false; // garante que não fique pausado
     updateDisplay(remainingSeconds);
 
     // Delay de 2 segundos antes de reiniciar a contagem
-    setTimeout(() => {
+    timerDelay = setTimeout(() => {
       timer = setInterval(() => {
         if (!paused) {
           remainingSeconds--;
@@ -75,8 +82,10 @@ function resetTimer() {
             alarm.currentTime = 0;
             alarm.play();
 
+            clearTimeout(timerDelay); // ⬅️ SEGURANÇA
+
             // fica 2 segundos em 00:00 e depois volta para o valor escolhido
-            setTimeout(() => {
+            timerDelay = setTimeout(() => {
               remainingSeconds = selectedMinutes * 60;
               updateDisplay(remainingSeconds);
             }, 2000);
@@ -116,4 +125,3 @@ function highlightButton(minutes) {
     }
   });
 }
-

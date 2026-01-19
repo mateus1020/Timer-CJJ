@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <img src="images-logo cjj.png" alt="Logo CJJ" class="logo">
+    <img src="images-logo cjj.png" alt="Logo CJJ" class="logo" />
 
     <div class="container">
       <h1>CJJ</h1>
@@ -19,12 +19,12 @@
 
       <!-- Bloco único para os botões -->
       <div class="buttons">
-        <button data-minutes="1" onclick="startTimer(1)">1 min</button>
-        <button data-minutes="2" onclick="startTimer(2)">2 min</button>
-        <button data-minutes="4" onclick="startTimer(4)">4 min</button>
-        <button data-minutes="5" onclick="startTimer(5)">5 min</button>
-        <button data-minutes="8" onclick="startTimer(8)">8 min</button>
-        <button data-minutes="10" onclick="startTimer(10)">10 min</button>
+        <button data-seconds="30" onclick="startTimer(30)">30 seg</button>
+        <button data-seconds="60" onclick="startTimer(60)">1 min</button>
+        <button data-seconds="120" onclick="startTimer(120)">2 min</button>
+        <button data-seconds="240" onclick="startTimer(240)">4 min</button>
+        <button data-seconds="300" onclick="startTimer(300)">5 min</button>
+        <button data-seconds="600" onclick="startTimer(600)">10 min</button>
       </div>
 
       <div id="display">00:00</div>

@@ -82,7 +82,7 @@ function resetTimer() {
     document.getElementById("display").innerText = "00:00";
   }
 
-  document.getElementById("display").style.color = "red";
+  document.getElementById("display").style.color = "white";
 }
 
 function updateDisplay(seconds) {
@@ -95,7 +95,7 @@ function updateDisplay(seconds) {
   if (seconds > 0 && seconds <= 5) {
     display.style.color = (seconds % 2 === 0) ? "yellow" : "white";
   } else {
-    display.style.color = "red";
+    display.style.color = "white";
   }
 }
 

@@ -1,23 +1,17 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Timer TV</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Prompt:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
 
-  <body>
-    <img src="images-logo cjj.png" alt="Logo CJJ" class="logo" />
+<head>
+  <meta charset="UTF-8" />
+  <title>Timer TV</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Prompt:wght@400;700&display=swap"
+    rel="stylesheet" />
+</head>
 
-    <div class="container">
-      <h1>CJJ</h1>
-      <h1>ESCOLA DE LUTAS</h1>
-
-      <!-- Bloco único para os botões -->
+<body>
+  <div class="container">
+    <div class="timer-box">
       <div class="buttons">
         <button data-seconds="30" onclick="startTimer(30)">30 seg</button>
         <button data-seconds="60" onclick="startTimer(60)">1 min</button>
@@ -26,17 +20,18 @@
         <button data-seconds="240" onclick="startTimer(240)">4 min</button>
         <button data-seconds="300" onclick="startTimer(300)">5 min</button>
       </div>
-
       <div id="display">00:00</div>
-
-      <div class="controls">
-        <button onclick="pauseTimer()">Pause</button>
-        <button onclick="resetTimer()">Reset</button>
-      </div>
     </div>
 
-    <audio id="alarm" src="alarm.mp3.mp3" preload="auto"></audio>
+    <div class="controls">
+      <button onclick="pauseTimer()">Pause</button>
+      <button onclick="resetTimer()">Reset</button>
+    </div>
+  </div>
 
-    <script src="script.js"></script>
-  </body>
+  <audio id="alarm" src="alarm.mp3.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+
 </html>

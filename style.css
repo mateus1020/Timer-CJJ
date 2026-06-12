@@ -33,7 +33,7 @@ body {
 }
 
 .app-shell {
-  width: min(1380px, 100%);
+  width: min(1240px, 96vw);
   display: grid;
 }
 
@@ -80,12 +80,12 @@ body {
 }
 
 .buttons button {
-  min-width: 120px;
-  padding: 16px 22px;
+  min-width: 112px;
+  padding: 14px 20px;
   border-radius: 999px;
   background: var(--surface);
   color: var(--text);
-  font-size: 1.08rem;
+  font-size: 1rem;
   font-weight: 700;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
@@ -104,8 +104,14 @@ body {
 .display-frame {
   position: relative;
   z-index: 1;
+  width: min(1100px, 100%);
+  margin-inline: auto;
+  min-height: 390px;
   border-radius: 30px;
   padding: 28px 30px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
     rgba(0, 0, 0, 0.3);
@@ -115,24 +121,28 @@ body {
 
 #display {
   font-family: "Bebas Neue", sans-serif;
-  font-size: clamp(8rem, 23vw, 21rem);
-  line-height: 0.88;
+  width: min(860px, 100%);
+  margin-inline: auto;
+  font-size: clamp(11rem, 19vw, 17.5rem);
+  line-height: 0.84;
   letter-spacing: 0.06em;
   text-align: center;
   color: var(--text);
   text-shadow: 0 0 24px rgba(255, 255, 255, 0.12);
-  margin: 6px 0 18px;
+  margin: 0 auto 20px;
 }
 
 .progress-area {
   display: block;
+  width: min(900px, 100%);
+  margin-inline: auto;
   padding-inline: 110px;
 }
 
 .progress-track {
   position: relative;
   width: 100%;
-  height: 14px;
+  height: 12px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
   overflow: visible;
@@ -192,10 +202,10 @@ body {
 }
 
 .controls button {
-  min-width: 180px;
-  padding: 17px 26px;
+  min-width: 168px;
+  padding: 15px 24px;
   border-radius: 18px;
-  font-size: 1.08rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 
@@ -217,7 +227,7 @@ body {
   }
 
   .app-shell {
-    width: 100%;
+    width: min(1180px, 98vw);
   }
 
   .timer-panel {
@@ -233,21 +243,25 @@ body {
   }
 
   .buttons button {
-    min-width: 106px;
-    padding: 14px 18px;
-    font-size: 1rem;
+    min-width: 100px;
+    padding: 12px 16px;
+    font-size: 0.96rem;
   }
 
   .display-frame {
+    width: min(1040px, 100%);
+    min-height: 350px;
     padding: 18px 20px 18px;
   }
 
   #display {
-    font-size: clamp(9rem, 34vw, 21rem);
-    margin: 0 0 10px;
+    width: min(760px, 100%);
+    font-size: clamp(10.2rem, 21vw, 15rem);
+    margin: 0 auto 12px;
   }
 
   .progress-area {
+    width: min(820px, 100%);
     padding-inline: 96px;
   }
 
@@ -267,15 +281,18 @@ body {
   }
 
   .display-frame {
+    min-height: 300px;
     padding: 16px 16px 14px;
   }
 
   #display {
-    font-size: clamp(8.5rem, 38vw, 20rem);
+    width: min(680px, 100%);
+    font-size: clamp(9.4rem, 23vw, 12.8rem);
     line-height: 0.84;
   }
 
   .progress-area {
+    width: min(760px, 100%);
     padding-inline: 88px;
   }
 }
@@ -308,16 +325,20 @@ body {
   }
 
   .display-frame {
+    width: min(980px, 100%);
+    min-height: 300px;
     padding: 14px 16px 14px;
   }
 
   #display {
-    font-size: clamp(9.6rem, 40vw, 22rem);
-    margin: 0 0 10px;
+    width: min(720px, 100%);
+    font-size: clamp(10.4rem, 25vw, 14rem);
+    margin: 0 auto 10px;
     line-height: 0.84;
   }
 
   .progress-area {
+    width: min(780px, 100%);
     padding-inline: 92px;
   }
 
@@ -398,6 +419,7 @@ body[data-timer-state="finished"] .coach-avatar {
   }
 
   .progress-area {
+    width: 100%;
     padding-inline: 84px;
   }
 
@@ -426,7 +448,12 @@ body[data-timer-state="finished"] .coach-avatar {
     padding: 20px;
   }
 
+  .display-frame {
+    min-height: auto;
+  }
+
   .progress-area {
+    width: 100%;
     padding-inline: 66px;
   }
 
@@ -442,6 +469,7 @@ body[data-timer-state="finished"] .coach-avatar {
   }
 
   #display {
+    width: 100%;
     font-size: clamp(6.5rem, 30vw, 9rem);
   }
 }

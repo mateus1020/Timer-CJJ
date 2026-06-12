@@ -45,6 +45,7 @@ body {
   background: var(--panel);
   backdrop-filter: blur(18px);
   box-shadow: var(--shadow);
+  padding: 32px;
 }
 
 .timer-panel::before {
@@ -53,10 +54,6 @@ body {
   inset: 0;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 35%, transparent 65%, rgba(255, 90, 54, 0.08));
   pointer-events: none;
-}
-
-.timer-panel {
-  padding: 32px;
 }
 
 .panel-top {
@@ -290,13 +287,10 @@ body[data-timer-state="finished"] .coach-avatar {
     height: 84px;
   }
 
-  .coach-avatar img {
-    border-radius: 999px;
-  }
-
   .buttons {
     justify-content: center;
   }
+
   .controls {
     flex-direction: column;
   }
@@ -325,10 +319,6 @@ body[data-timer-state="finished"] .coach-avatar {
     flex-basis: 68px;
     width: 68px;
     height: 68px;
-  }
-
-  .coach-avatar img {
-    border-radius: 999px;
   }
 
   #display {

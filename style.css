@@ -3,8 +3,8 @@ body {
   color: #fff;
   font-family: "Prompt", sans-serif;
   text-align: center;
-  
 }
+
 .container {
   margin-top: 20px;
 }
@@ -23,23 +23,36 @@ h1 {
 
 .buttons {
   position: absolute;
-  top: 60px;                
+  top: 50px;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 10;
+  width: 100%;
+}
+
+.buttons-row {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  z-index: 10;
+  flex-wrap: nowrap;
+  width: 100%;
 }
 
+.buttons-row-bottom {
+  margin-top: 2px;
+}
 
 .buttons button.active {
-   background: #111; 
-   color: yellow;
-   border: 3px solid red;
-   font-weight: bold;
-   box-shadow: 0 0 15px re
+  background: #111;
+  color: yellow;
+  border: 3px solid red;
+  font-weight: bold;
+  box-shadow: 0 0 15px re
 }
 
 .buttons button {
@@ -47,8 +60,10 @@ h1 {
   padding: 14px 15px;
   cursor: pointer;
   color: #111;
-  border: 2px solid; 
+  border: 2px solid;
   border-radius: 8px;
+  min-width: 88px;
+  flex: 0 0 auto;
 }
 
 .custom button, .controls button, #custom {
@@ -61,18 +76,17 @@ h1 {
 
 #display {
   font-size: 365px;
-  margin: 20px 0;
+  margin: 23px 0;
   color: #fff;
   border: 4px solid white;
-  border-radius: 12px; 
-  padding: 20px 40px; 
-  display: inline-block; 
-  width: 1200px; 
-  text-align: center; 
+  border-radius: 12px;
+  padding: 20px 40px;
+  display: inline-block;
+  width: 1200px;
+  text-align: center;
   box-sizing: border-box;
 }
 
 .custom {
   margin: 10px 0;
 }
-

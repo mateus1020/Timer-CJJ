@@ -4,16 +4,7 @@ let remainingSeconds = 0;
 let paused = true;
 let selectedSeconds = 0;
 
-function updateClock() {
-  const clock = document.getElementById("clock");
-  if (!clock) return;
-
-  clock.innerText = new Date().toLocaleTimeString("pt-BR", {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-}
-
+// Seleciona o tempo (não inicia)
 function startTimer(seconds) {
   clearInterval(timer);
   clearTimeout(timerDelay);
@@ -21,29 +12,30 @@ function startTimer(seconds) {
   selectedSeconds = seconds;
   remainingSeconds = seconds;
   paused = true;
-  setPlayButtonLabel("Iniciar");
-  setTimerState("ready");
 
   updateDisplay(remainingSeconds);
-  updateProgress();
   highlightButton(seconds);
+
+  document.querySelector(".controls button").innerText = "Iniciar";
 }
 
+// Botão Iniciar / Pausar
 function pauseTimer() {
+  const pauseBtn = document.querySelector(".controls button");
+
   if (selectedSeconds === 0) return;
 
   if (paused) {
     paused = false;
-    setPlayButtonLabel("Pausar");
-    setTimerState("running");
+    pauseBtn.innerText = "Pausar";
     startCountdown();
   } else {
     paused = true;
-    setPlayButtonLabel("Continuar");
-    setTimerState("paused");
+    pauseBtn.innerText = "Iniciar";
   }
 }
 
+// Inicia a contagem
 function startCountdown() {
   clearInterval(timer);
   clearTimeout(timerDelay);
@@ -53,32 +45,22 @@ function startCountdown() {
       if (!paused) {
         remainingSeconds--;
         updateDisplay(remainingSeconds);
-        updateProgress();
-
-        if (remainingSeconds <= 5 && remainingSeconds > 0) {
-          setTimerState("warning");
-        }
 
         if (remainingSeconds <= 0) {
           clearInterval(timer);
           updateDisplay(0);
-          updateProgress();
-          setTimerState("finished");
 
           const alarm = document.getElementById("alarm");
           alarm.currentTime = 0;
           alarm.play();
 
           clearTimeout(timerDelay);
-          setPlayButtonLabel("Reiniciando");
 
           timerDelay = setTimeout(() => {
             remainingSeconds = selectedSeconds;
             paused = true;
             updateDisplay(remainingSeconds);
-            updateProgress();
-            setPlayButtonLabel("Iniciar");
-            setTimerState("ready");
+            document.querySelector(".controls button").innerText = "Iniciar";
           }, 2000);
         }
       }
@@ -90,71 +72,40 @@ function resetTimer() {
   clearInterval(timer);
   clearTimeout(timerDelay);
 
-  paused = true;
-  setPlayButtonLabel("Iniciar");
-
   if (selectedSeconds > 0) {
     remainingSeconds = selectedSeconds;
+    paused = true;
     updateDisplay(remainingSeconds);
-    updateProgress();
-    setTimerState("ready");
+    document.querySelector(".controls button").innerText = "Iniciar";
   } else {
     remainingSeconds = 0;
-    selectedSeconds = 0;
     document.getElementById("display").innerText = "00:00";
-    updateProgress();
-    setTimerState("idle");
   }
+
+  document.getElementById("display").style.color = "white";
 }
 
 function updateDisplay(seconds) {
-  const safeSeconds = Math.max(seconds, 0);
-  const min = Math.floor(safeSeconds / 60);
-  const sec = safeSeconds % 60;
+  const min = Math.floor(seconds / 60);
+  const sec = seconds % 60;
+  const display = document.getElementById("display");
 
-  document.getElementById("display").innerText =
-    `${String(min).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
-}
+  display.innerText = `${String(min).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
 
-function updateProgress() {
-  const progressBar = document.getElementById("progress-bar");
-
-  if (!progressBar) return;
-
-  if (selectedSeconds <= 0) {
-    progressBar.style.width = "0%";
-    return;
+  if (seconds > 0 && seconds <= 5) {
+    display.style.color = (seconds % 2 === 0) ? "yellow" : "white";
+  } else {
+    display.style.color = "white";
   }
-
-  const elapsed = selectedSeconds - remainingSeconds;
-  const progress = Math.min(Math.max((elapsed / selectedSeconds) * 100, 0), 100);
-  progressBar.style.width = `${progress}%`;
 }
 
-function setPlayButtonLabel(label) {
-  const playButton = document.getElementById("play-pause");
-  if (!playButton) return;
-
-  playButton.innerText = label;
-}
-
-function setTimerState(state) {
-  document.body.dataset.timerState = state;
-}
-
+// Destaque do botão selecionado
 function highlightButton(seconds) {
   const buttons = document.querySelectorAll(".buttons button");
-
-  buttons.forEach((button) => {
-    button.classList.remove("active");
-
-    if (parseInt(button.dataset.seconds, 10) === seconds) {
-      button.classList.add("active");
+  buttons.forEach(btn => {
+    btn.classList.remove("active");
+    if (parseInt(btn.dataset.seconds) === seconds) {
+      btn.classList.add("active");
     }
   });
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  updateClock();
-  setInterval(updateClock, 1000);
-});

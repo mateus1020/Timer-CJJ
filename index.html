@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Timer TV</title>
-  <link rel="stylesheet" href="style.css?v=2" />
+  <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Prompt:wght@400;700&display=swap"
     rel="stylesheet" />
 </head>
@@ -20,29 +20,24 @@
           <button data-seconds="120" onclick="startTimer(120)">2 min</button>
           <button data-seconds="180" onclick="startTimer(180)">3 min</button>
         </div>
-
         <div class="buttons-row buttons-row-bottom">
           <button data-seconds="240" onclick="startTimer(240)">4 min</button>
           <button data-seconds="300" onclick="startTimer(300)">5 min</button>
           <button data-seconds="360" onclick="startTimer(360)">6 min</button>
         </div>
       </div>
-
-      <div class="display-panel">
-        <div id="display">00:00</div>
-        <div id="clock" aria-label="Hora atual">00:00</div>
-      </div>
+      <div id="display">00:00</div>
     </div>
 
     <div class="controls">
-      <button id="play-pause" onclick="pauseTimer()">Iniciar</button>
+      <button onclick="pauseTimer()">Iniciar</button>
       <button onclick="resetTimer()">Resetar</button>
     </div>
   </div>
 
   <audio id="alarm" src="alarm.mp3.mp3" preload="auto"></audio>
 
-  <script src="script.js?v=2"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
